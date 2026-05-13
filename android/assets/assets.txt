@@ -1,0 +1,12 @@
+images/background.jpg
+images/bomba.png
+images/fruita1.png
+images/fruita2.png
+images/fruita3.png
+images/logo.png
+images/splash.png
+sounds/bomb.mp3
+sounds/gameover.mp3
+sounds/life.mp3
+sounds/slash.mp3
+ui/title.ttf
