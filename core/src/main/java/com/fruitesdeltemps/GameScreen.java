@@ -84,14 +84,11 @@ public class GameScreen implements Screen {
         fruits = new Array<>();
         bombs = new Array<>();
 
-        // ==========================================
-        // ¡AQUÍ VAN LAS LÍNEAS DE LOS SONIDOS!
-        // ==========================================
         slashSound = game.assetManager.get("sounds/slash.mp3", Sound.class);
         bombSound = game.assetManager.get("sounds/bomb.mp3", Sound.class);
         lifeSound = game.assetManager.get("sounds/life.mp3", Sound.class);
         gameoverSound = game.assetManager.get("sounds/gameover.mp3", Sound.class);
-        // ==========================================
+
 
         score = 0;
         lives = 3;
@@ -104,11 +101,9 @@ public class GameScreen implements Screen {
         int screenWidth = Gdx.graphics.getWidth();
         int screenHeight = Gdx.graphics.getHeight();
 
-        // Aparece en la PARTE INFERIOR de la pantalla
         float x = MathUtils.random(0, screenWidth - FRUIT_SIZE);
-        float y = 0; // Desde el borde inferior
+        float y = 0;
 
-        // Velocidad: SUBE RÁPIDO (positiva) pero con más impulso
         float vx = MathUtils.random(-3, 3);     // Movimiento lateral
         float vy = MathUtils.random(15, 20);    // Impulso fuerte hacia arriba
 
@@ -134,7 +129,7 @@ public class GameScreen implements Screen {
 
             if (lives <= 0) {
                 gameOver = true;
-                gameoverSound.play();  // ← AÑADE ESTA LÍNEA
+                gameoverSound.play();
                 gameOverTimer = 3;
             }
         }
@@ -151,11 +146,11 @@ public class GameScreen implements Screen {
                 if (fruit.bounds.contains(touchX, touchY)) {
                     fruits.removeIndex(i);
                     score += 10;
-                    slashSound.play();  // ← AÑADE ESTA LÍNEA
+                    slashSound.play();
                     // Ganar vida cada 100 puntos
                     if (score % 100 == 0 && score > 0) {
                         lives = Math.min(lives + 1, 5);
-                        lifeSound.play();  // ← AÑADE ESTA LÍNEA
+                        lifeSound.play();
                     }
                     break;
                 }
@@ -166,7 +161,7 @@ public class GameScreen implements Screen {
                 GameObject bomb = bombs.get(i);
                 if (bomb.bounds.contains(touchX, touchY)) {
                     bombs.removeIndex(i);
-                    bombSound.play();  // ← AÑADE ESTA LÍNEA
+                    bombSound.play();
                     loseLife();
                     break;
                 }
@@ -232,7 +227,6 @@ public class GameScreen implements Screen {
 
         checkCollisions();
 
-        // Dibujar
         game.batch.begin();
         game.batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
